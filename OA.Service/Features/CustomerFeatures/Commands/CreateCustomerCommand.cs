@@ -30,6 +30,14 @@ namespace ECom.Service.Features.CustomerFeatures.Commands
                 var customer = new Customer();
                 customer.CustomerName = request.CustomerName;
                 customer.ContactName = request.ContactName;
+                customer.ContactTitle = request.ContactTitle;
+                customer.Address = request.Address;
+                customer.City = request.City;
+                customer.Region = request.Region;
+                customer.PostalCode = request.PostalCode;
+                customer.Country = request.Country;
+                customer.Phone = request.Phone;
+                customer.Fax = request.Fax;
 
                 _context.Customers.Add(customer);
                 await _context.SaveChangesAsync();

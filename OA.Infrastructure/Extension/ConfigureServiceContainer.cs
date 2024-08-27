@@ -43,8 +43,10 @@ namespace OA.Infrastructure.Extension
         public static void AddScopedServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-
-
+            serviceCollection.AddScoped<ICategoryService, CategoryService>();
+            serviceCollection.AddScoped<ICategoryRepository, CategoryRepository>();
+            serviceCollection.AddScoped<IProductService, ProductService>();
+            serviceCollection.AddScoped<IProductRepository, ProductRepository>();
         }
         public static void AddTransientServices(this IServiceCollection serviceCollection)
         {

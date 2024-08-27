@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using OA.Controllers;
-using OA.Domain.Entities;
-using OA.Persistence;
-using OA.Service.Contract;
+using ECom.Controllers;
+using ECom.Domain.Entities;
+using ECom.Persistence;
+using ECom.Service.Contract;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
-namespace OA.Test.Unit.Controller
+namespace ECom.Test.Unit.Controller
 {
     [TestFixture]
     public class CategoryControllerUnitTest
@@ -26,43 +27,32 @@ namespace OA.Test.Unit.Controller
             {
                 Id = 1,
                 CategoryName = "Dairy",
-                Description = "Different products generated from Milk",
-                Products = new List<Product>{
-                    new Product{ Id=1,ProductName="Cow Milk",UnitPrice= 5.25M },
-                    new Product{ Id=2,ProductName="Ship Milk",UnitPrice= 7.5M }
-                }
+                Description = "Different products generated from Milk"
             };
             c2 = new Category {
-                Id = 1,
+                Id = 2,
                 CategoryName = "Vegetables",
-                Description = "Different products generated from Plants",
-                Products = new List<Product>{
-                    new Product{ Id=3,ProductName="Spinach",UnitPrice= 1.1M },
-                    new Product{ Id=4,ProductName="Carrot",UnitPrice= 0.5M }
-                }
+                Description = "Different products generated from Plants"
             };
             c3 = new Category {
-                Id = 1,
+                Id = 3,
                 CategoryName = "Bakery",
-                Description = "Different products generated in Bakery",
-                Products = new List<Product>{
-                    new Product{ Id=5,ProductName="Bread",UnitPrice= 0.85M },
-                    new Product{ Id=6,ProductName="Cake",UnitPrice= 5.5M }
-                }
+                Description = "Different products generated in Bakery"
             };
 
             categories = new List<Category> { c1, c2 };
             applicationDbContextMock = new Mock<ApplicationDbContext>();
-            categoryController = new CategoryController(categoryServiceMock.Object);
+            categoryServiceMock = new Mock<ICategoryService>();
+            categoryController = new CategoryController();
         }
         [Test]
         public void Get_List_Of_Categories()
         {
             //setup 
-            applicationDbContextMock.Setup(db => db.Categories.ToList()).Returns(categories);
+            applicationDbContextMock.Setup(db =>  db.Categories.ToList()).Returns(categories);
 
-            var result = categoryController.GetAllCategories() as ViewResult;
-            var model = result.Model as List<Category>;
+            var result = categoryController.GetAll();
+            var model = result.Result as List<Category>;
 
             CollectionAssert.Contains(model, c1);
             CollectionAssert.Contains(model, c2);

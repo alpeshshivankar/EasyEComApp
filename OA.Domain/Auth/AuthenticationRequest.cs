@@ -1,4 +1,4 @@
-﻿namespace OA.Domain.Auth
+﻿namespace ECom.Domain.Auth
 {
     public class AuthenticationRequest
     {

@@ -1,11 +1,11 @@
-﻿using OA.Domain.Entities;
-using OA.Infrastructure.CategoryRepo;
-using OA.Persistence;
-using OA.Service.Contract;
+﻿using ECom.Domain.Entities;
+using ECom.Infrastructure.CategoryRepo;
+using ECom.Persistence;
+using ECom.Service.Contract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OA.Infrastructure.CategoryRepo
+namespace ECom.Infrastructure.CategoryRepo
 {
     public class CategoryRepository : ICategoryRepository
     {

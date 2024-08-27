@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using OA.Domain.Enum;
+using ECom.Domain.Enum;
 using System.Collections.Generic;
 
-namespace OA.Persistence.Seeds
+namespace ECom.Persistence.Seeds
 {
     public static class MappingUserRole
     {

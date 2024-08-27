@@ -1,4 +1,4 @@
-﻿namespace OA.Domain.Settings
+﻿namespace ECom.Domain.Settings
 {
     public class MailRequest
     {

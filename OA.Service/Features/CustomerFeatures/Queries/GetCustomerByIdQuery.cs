@@ -1,11 +1,12 @@
 ﻿using MediatR;
-using OA.Domain.Entities;
-using OA.Persistence;
+using ECom.Domain.Entities;
+using ECom.Persistence;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OA.Service.Features.CustomerFeatures.Queries
+
+namespace ECom.Service.Features.CustomerFeatures.Queries
 {
     public class GetCustomerByIdQuery : IRequest<Customer>
     {
@@ -24,5 +25,6 @@ namespace OA.Service.Features.CustomerFeatures.Queries
                 return customer;
             }
         }
+        
     }
 }

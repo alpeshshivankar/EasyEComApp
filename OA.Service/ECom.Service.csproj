@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OA.Persistence\OA.Persistence.csproj" />
+    <ProjectReference Include="..\OA.Persistence\ECom.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

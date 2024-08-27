@@ -1,7 +1,7 @@
-﻿using OA.Service.Contract;
+﻿using ECom.Service.Contract;
 using System;
 
-namespace OA.Service.Implementation
+namespace ECom.Service.Implementation
 {
     public class DateTimeService : IDateTimeService
     {

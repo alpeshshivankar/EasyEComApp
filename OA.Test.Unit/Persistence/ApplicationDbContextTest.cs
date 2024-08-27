@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using OA.Domain.Entities;
-using OA.Persistence;
+using ECom.Domain.Entities;
+using ECom.Persistence;
 
-namespace OA.Test.Unit.Persistence
+namespace ECom.Test.Unit.Persistence
 {
     public class ApplicationDbContextTest
     {

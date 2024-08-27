@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace OA.Domain.Common
+namespace ECom.Domain.Common
 {
     public class IpHelper
     {

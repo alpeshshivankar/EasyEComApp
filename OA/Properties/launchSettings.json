@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "OA": {
+    "ECom": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "OpenAPI/index.html",

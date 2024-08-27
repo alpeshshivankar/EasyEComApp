@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OA.Service.Exceptions
+namespace ECom.Service.Exceptions
 {
     public class NotFoundException : Exception
     {

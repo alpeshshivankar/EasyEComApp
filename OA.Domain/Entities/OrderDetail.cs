@@ -1,4 +1,4 @@
-﻿namespace OA.Domain.Entities
+﻿namespace ECom.Domain.Entities
 {
     public class OrderDetail
     {

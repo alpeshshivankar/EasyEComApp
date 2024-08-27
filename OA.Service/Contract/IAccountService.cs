@@ -1,8 +1,8 @@
-﻿using OA.Domain.Auth;
-using OA.Domain.Common;
+﻿using ECom.Domain.Auth;
+using ECom.Domain.Common;
 using System.Threading.Tasks;
 
-namespace OA.Service.Contract
+namespace ECom.Service.Contract
 {
     public interface IAccountService
     {

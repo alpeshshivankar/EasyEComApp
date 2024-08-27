@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace OA.Service.Exceptions
+namespace ECom.Service.Exceptions
 {
     [Serializable]
     public class BadRequestException : Exception

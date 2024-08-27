@@ -1,7 +1,7 @@
-﻿using OA.Domain.Settings;
+﻿using ECom.Domain.Settings;
 using System.Threading.Tasks;
 
-namespace OA.Service.Contract
+namespace ECom.Service.Contract
 {
     public interface IEmailService
     {

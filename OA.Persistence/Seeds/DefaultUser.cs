@@ -1,8 +1,8 @@
-﻿using OA.Domain.Auth;
-using OA.Domain.Enum;
+﻿using ECom.Domain.Auth;
+using ECom.Domain.Enum;
 using System.Collections.Generic;
 
-namespace OA.Persistence.Seeds
+namespace ECom.Persistence.Seeds
 {
     public static class DefaultUser
     {

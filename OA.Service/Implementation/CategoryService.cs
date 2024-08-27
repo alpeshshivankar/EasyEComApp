@@ -1,8 +1,8 @@
-﻿using OA.Domain.Entities;
-using OA.Service.Contract;
+﻿using ECom.Domain.Entities;
+using ECom.Service.Contract;
 using System.Collections.Generic;
 
-namespace OA.Service.Implementation
+namespace ECom.Service.Implementation
 {
     public class CategoryService : ICategoryService
     {

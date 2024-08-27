@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OA.Controllers
+namespace ECom.Controllers
 {
     public class MetaController : ControllerBase
     {

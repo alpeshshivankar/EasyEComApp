@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace OA.Service.Exceptions
+namespace ECom.Service.Exceptions
 {
     public class ApiException : Exception
     {

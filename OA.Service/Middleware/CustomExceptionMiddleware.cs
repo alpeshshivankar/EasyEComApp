@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using OA.Service.Exceptions;
+using ECom.Service.Exceptions;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace OA.Service.Middleware
+namespace ECom.Service.Middleware
 {
     public class CustomExceptionMiddleware
     {

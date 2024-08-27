@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace OA.Domain.Entities
+namespace ECom.Domain.Entities
 {
     public class Order : BaseEntity
     {

@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using Microsoft.FeatureManagement;
 using Microsoft.IdentityModel.Tokens;
-using OA.Domain.Auth;
-using OA.Domain.Common;
-using OA.Domain.Enum;
-using OA.Domain.Settings;
-using OA.Service.Contract;
-using OA.Service.Exceptions;
+using ECom.Domain.Auth;
+using ECom.Domain.Common;
+using ECom.Domain.Enum;
+using ECom.Domain.Settings;
+using ECom.Service.Contract;
+using ECom.Service.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,7 +18,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OA.Service.Implementation
+namespace ECom.Service.Implementation
 {
     public class AccountService : IAccountService
     {

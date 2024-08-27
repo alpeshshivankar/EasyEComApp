@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OA\OA.csproj" />
+    <ProjectReference Include="..\OA\ECom.csproj" />
   </ItemGroup>
  
 

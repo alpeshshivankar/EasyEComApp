@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using OA.Domain.Entities;
-using OA.Persistence;
+using ECom.Domain.Entities;
+using ECom.Persistence;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OA.Service.Features.CustomerFeatures.Commands
+namespace ECom.Service.Features.CustomerFeatures.Commands
 {
     public class CreateCustomerCommand : IRequest<int>
     {

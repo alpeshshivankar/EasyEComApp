@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OA.Domain.Entities
+namespace ECom.Domain.Entities
 {
     public class Customer : BaseEntity
     {

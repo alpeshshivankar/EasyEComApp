@@ -7,17 +7,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using OA.Domain.Auth;
-using OA.Domain.Common;
-using OA.Domain.Settings;
-using OA.Persistence;
-using OA.Service.Contract;
-using OA.Service.Implementation;
+using ECom.Domain.Auth;
+using ECom.Domain.Common;
+using ECom.Domain.Settings;
+using ECom.Persistence;
+using ECom.Service.Contract;
+using ECom.Service.Implementation;
 using System;
 using System.Reflection;
 using System.Text;
 
-namespace OA.Service
+namespace ECom.Service
 {
     public static class DependencyInjection
     {

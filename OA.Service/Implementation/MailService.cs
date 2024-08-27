@@ -3,12 +3,12 @@ using MailKit.Security;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MimeKit;
-using OA.Domain.Settings;
-using OA.Service.Contract;
-using OA.Service.Exceptions;
+using ECom.Domain.Settings;
+using ECom.Service.Contract;
+using ECom.Service.Exceptions;
 using System.Threading.Tasks;
 
-namespace OA.Service.Implementation
+namespace ECom.Service.Implementation
 {
     public class MailService : IEmailService
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OA.Domain.Entities;
+using ECom.Domain.Entities;
 using System.Threading.Tasks;
 
-namespace OA.Persistence
+namespace ECom.Persistence
 {
     public interface IApplicationDbContext
     {

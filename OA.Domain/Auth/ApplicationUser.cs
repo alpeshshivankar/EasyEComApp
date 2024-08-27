@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
-namespace OA.Domain.Auth
+namespace ECom.Domain.Auth
 {
     public class ApplicationUser : IdentityUser
     {

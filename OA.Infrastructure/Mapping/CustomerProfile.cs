@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using OA.Domain.Entities;
-using OA.Infrastructure.ViewModel;
+using ECom.Domain.Entities;
+using ECom.Infrastructure.ViewModel;
 
-namespace OA.Infrastructure.Mapping
+namespace ECom.Infrastructure.Mapping
 {
     public class CustomerProfile : Profile
     {

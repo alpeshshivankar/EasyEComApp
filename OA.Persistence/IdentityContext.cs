@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using OA.Domain.Auth;
-using OA.Persistence.Seeds;
+using ECom.Domain.Auth;
+using ECom.Persistence.Seeds;
 
-namespace OA.Persistence
+namespace ECom.Persistence
 {
     public class IdentityContext : IdentityDbContext<ApplicationUser>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OA.Domain.Common
+namespace ECom.Domain.Common
 {
     public class Response<T>
     {

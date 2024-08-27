@@ -36,15 +36,15 @@ namespace ECom.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UpdateProductCommand command)
-        {
-            if (id != command.Id)
-            {
-                return BadRequest();
-            }
-            return Ok(await Mediator.Send(command));
-        }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Update(int id, UpdateProductCommand command)
+        //{
+        //    if (id != command.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+        //    return Ok(await Mediator.Send(command));
+        //}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

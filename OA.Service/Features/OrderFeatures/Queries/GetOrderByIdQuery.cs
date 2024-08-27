@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ECom.Service.Features.OrederFeatures.Queries
+namespace ECom.Service.Features.OrderFeatures.Queries
 {
     public  class GetOrderByIdQuery:IRequest<Order>
     {

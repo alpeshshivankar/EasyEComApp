@@ -3,6 +3,7 @@ using ECom.Persistence;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ECom.Domain.Entities;
 
 namespace ECom.Service.Features.CustomerFeatures.Commands
 {
@@ -38,6 +39,14 @@ namespace ECom.Service.Features.CustomerFeatures.Commands
                 {
                     cust.CustomerName = request.CustomerName;
                     cust.ContactName = request.ContactName;
+                    cust.ContactTitle = request.ContactTitle;
+                    cust.Address = request.Address;
+                    cust.City = request.City;
+                    cust.Region = request.Region;
+                    cust.PostalCode = request.PostalCode;
+                    cust.Country = request.Country;
+                    cust.Phone = request.Phone;
+                    cust.Fax = request.Fax;
                     _context.Customers.Update(cust);
                     await _context.SaveChangesAsync();
                     return cust.Id;

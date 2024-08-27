@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OA.Service\OA.Service.csproj" />
+    <ProjectReference Include="..\OA.Service\ECom.Service.csproj" />
   </ItemGroup>
 
 </Project>

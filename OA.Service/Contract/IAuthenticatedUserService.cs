@@ -1,4 +1,4 @@
-﻿namespace OA.Service.Contract
+﻿namespace ECom.Service.Contract
 {
     public interface IAuthenticatedUserService
     {

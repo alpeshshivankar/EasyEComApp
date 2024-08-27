@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OA.Domain.Auth;
-using OA.Service.Contract;
+using ECom.Domain.Auth;
+using ECom.Service.Contract;
 using System.Threading.Tasks;
 
-namespace OA.Controllers
+namespace ECom.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

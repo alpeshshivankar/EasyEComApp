@@ -1,23 +1,23 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using OA.Persistence;
+using ECom.Persistence;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OA.Service.Features.CustomerFeatures.Commands
+namespace ECom.Service.Features.CustomerFeatures.Commands
 {
-    public class DeleteCustomerByIdCommand : IRequest<int>
+    public class DeleteProductCommand : IRequest<int>
     {
         public int Id { get; set; }
-        public class DeleteCustomerByIdCommandHandler : IRequestHandler<DeleteCustomerByIdCommand, int>
+        public class DeleteCustomerByIdCommandHandler : IRequestHandler<DeleteProductCommand, int>
         {
             private readonly IApplicationDbContext _context;
             public DeleteCustomerByIdCommandHandler(IApplicationDbContext context)
             {
                 _context = context;
             }
-            public async Task<int> Handle(DeleteCustomerByIdCommand request, CancellationToken cancellationToken)
+            public async Task<int> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
             {
                 var customer = await _context.Customers.Where(a => a.Id == request.Id).FirstOrDefaultAsync();
                 if (customer == null) return default;

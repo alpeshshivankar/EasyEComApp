@@ -1,74 +1,56 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using OA.Domain.Entities;
-using OA.Service.Contract;
+using ECom.Domain.Entities;
+using ECom.Service.Features.CustomerFeatures.Queries;
+using MediatR;
+using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using ECom.Service.Features.CustomerFeatures.Commands;
+using ECom.Service.Features.CategoryFeatures.Commands;
 
-namespace OA.Controllers
+namespace ECom.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/v{version:apiVersion}/Category")]
+    [ApiVersion("1.0")]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService _categoryService;
+        private IMediator _mediator;
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        public CategoryController(ICategoryService categoryService)
+        
+
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetAll()
         {
-            _categoryService = categoryService;
+            return Ok(await Mediator.Send(new GetAllCategoryQuery()));
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetCategory(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var category = _categoryService.GetCategoryById(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return Ok(category);
-        }
-
-        [HttpGet]
-        public IActionResult GetAllCategories()
-        {
-            var categories = _categoryService.GetAllCategories();
-            return Ok(categories);
+            return Ok(await Mediator.Send(new GetCategoryByIdQuery { Id = id }));
         }
 
         [HttpPost]
-        public IActionResult AddCategory([FromBody] Category category)
+        public async Task<IActionResult> Create(CreateCategoryCommand command)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var createdCategory = _categoryService.AddCategory(category);
-            return CreatedAtAction(nameof(GetCategory), new { id = createdCategory.Id }, createdCategory);
+            return Ok(await Mediator.Send(command));
         }
-
         [HttpPut("{id}")]
-        public IActionResult UpdateCategory(int id, [FromBody] Category category)
+        public async Task<IActionResult> Update(int id, UpdateCategoryCommand command)
         {
-            if (id != category.Id || !ModelState.IsValid)
+            if (id != command.Id)
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
-            var updatedCategory = _categoryService.UpdateCategory(category);
-            if (updatedCategory == null)
-            {
-                return NotFound();
-            }
-            return Ok(updatedCategory);
+            return Ok(await Mediator.Send(command));
         }
-
         [HttpDelete("{id}")]
-        public IActionResult DeleteCategory(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var deleted = _categoryService.DeleteCategory(id);
-            if (!deleted)
-            {
-                return NotFound();
-            }
-            return NoContent();
+            return Ok(await Mediator.Send(new DeleteCategoryCommand { Id = id }));
         }
     }
 }

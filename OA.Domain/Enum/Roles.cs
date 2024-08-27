@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OA.Domain.Enum
+namespace ECom.Domain.Enum
 {
     public enum Roles
     {

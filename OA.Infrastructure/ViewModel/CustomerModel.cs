@@ -1,4 +1,4 @@
-﻿namespace OA.Infrastructure.ViewModel
+﻿namespace ECom.Infrastructure.ViewModel
 {
     public class CustomerModel
     {

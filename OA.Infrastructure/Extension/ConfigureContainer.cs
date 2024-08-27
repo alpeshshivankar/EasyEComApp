@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
-using OA.Service.Middleware;
+using ECom.Service.Middleware;
 using Serilog;
 
-namespace OA.Infrastructure.Extension
+namespace ECom.Infrastructure.Extension
 {
     public static class ConfigureContainer
     {
@@ -22,7 +22,7 @@ namespace OA.Infrastructure.Extension
 
             app.UseSwaggerUI(setupAction =>
             {
-                setupAction.SwaggerEndpoint("/swagger/OpenAPISpecification/swagger.json", "Onion Architecture API");
+                setupAction.SwaggerEndpoint("/swagger/OpenAPISpecification/swagger.json", "EComs API");
                 setupAction.RoutePrefix = "OpenAPI";
             });
         }

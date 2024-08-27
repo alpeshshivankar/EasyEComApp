@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OA.Domain.Settings;
-using OA.Service.Contract;
+using ECom.Domain.Settings;
+using ECom.Service.Contract;
 using System.Threading.Tasks;
 
-namespace OA.Controllers
+namespace ECom.Controllers
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/Mail")]

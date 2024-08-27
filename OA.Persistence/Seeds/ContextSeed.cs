@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using OA.Domain.Auth;
+using ECom.Domain.Auth;
 using System.Collections.Generic;
 
-namespace OA.Persistence.Seeds
+namespace ECom.Persistence.Seeds
 {
     public static class ContextSeed
     {

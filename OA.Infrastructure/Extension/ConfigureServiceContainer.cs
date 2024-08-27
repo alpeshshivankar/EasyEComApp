@@ -5,18 +5,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
-using OA.Domain.Settings;
-using OA.Infrastructure.Mapping;
-using OA.Persistence;
-using OA.Service.Contract;
-using OA.Service.Implementation;
+using ECom.Domain.Settings;
+using ECom.Infrastructure.Mapping;
+using ECom.Persistence;
+using ECom.Service.Contract;
+using ECom.Service.Implementation;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Reflection;
+using ECom.Infrastructure.CategoryRepo;
+using ECom.Infrastructure.ProductRepo;
 
-namespace OA.Infrastructure.Extension
+namespace ECom.Infrastructure.Extension
 {
     public static class ConfigureServiceContainer
     {
@@ -24,9 +23,11 @@ namespace OA.Infrastructure.Extension
              IConfiguration configuration, IConfigurationRoot configRoot)
         {
             serviceCollection.AddDbContext<ApplicationDbContext>(options =>
-                   options.UseSqlServer(configuration.GetConnectionString("OnionArchConn") ?? configRoot["ConnectionStrings:OnionArchConn"]
+                   options.UseSqlServer(configuration.GetConnectionString("EComConn") ?? configRoot["ConnectionStrings:EComConn"]
                 , b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            //serviceCollection.AddDbContext<ApplicationDbContext>(options =>
+            //       options.UseInMemoryDatabase("EComDb"));
 
         }
 
@@ -131,7 +132,7 @@ namespace OA.Infrastructure.Extension
             serviceCollection.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>(name: "Application DB Context", failureStatus: HealthStatus.Degraded)
                 .AddUrlGroup(new Uri(appSettings.ApplicationDetail.ContactWebsite), name: "My personal website", failureStatus: HealthStatus.Degraded)
-                .AddSqlServer(configuration.GetConnectionString("OnionArchConn"));
+                .AddSqlServer(configuration.GetConnectionString("EComConn"));
             
             serviceCollection.AddHealthChecksUI(setupSettings: setup =>
             {

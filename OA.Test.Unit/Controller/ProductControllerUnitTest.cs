@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using NUnit.Framework;
-using OA.Domain.Entities;
-using OA.Persistence;
+using ECom.Domain.Entities;
+using ECom.Persistence;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OA.Test.Unit.Controller
+namespace ECom.Test.Unit.Controller
 {
     public class ProductControllerUnitTest
     {

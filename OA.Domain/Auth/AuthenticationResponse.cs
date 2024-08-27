@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace OA.Domain.Auth
+namespace ECom.Domain.Auth
 {
     public class AuthenticationResponse
     {

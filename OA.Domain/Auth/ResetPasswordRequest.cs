@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OA.Domain.Auth
+namespace ECom.Domain.Auth
 {
     public class ResetPasswordRequest
     {

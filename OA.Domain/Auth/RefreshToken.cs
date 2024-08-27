@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OA.Domain.Auth
+namespace ECom.Domain.Auth
 {
     public class RefreshToken
     {

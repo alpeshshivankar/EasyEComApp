@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using OA.Service.Features.CustomerFeatures.Commands;
-using OA.Service.Features.CustomerFeatures.Queries;
+using ECom.Service.Features.CustomerFeatures.Commands;
+using ECom.Service.Features.CustomerFeatures.Queries;
 using System.Threading.Tasks;
+using ECom.Service.Features.ProductFeatures.Queries;
 
-namespace OA.Controllers
+namespace ECom.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/v{version:apiVersion}/Customer")]
     [ApiVersion("1.0")]
@@ -39,12 +40,12 @@ namespace OA.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await Mediator.Send(new DeleteCustomerByIdCommand { Id = id }));
+            return Ok(await Mediator.Send(new DeleteProductCommand { Id = id }));
         }
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UpdateCustomerCommand command)
+        public async Task<IActionResult> Update(int id, UpdateProductCommand command)
         {
             if (id != command.Id)
             {

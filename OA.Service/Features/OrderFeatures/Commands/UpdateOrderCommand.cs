@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using ECom.Persistence;
+using ECom.Application.Persistance;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Linq;

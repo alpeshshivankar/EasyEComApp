@@ -1,7 +1,7 @@
 ﻿using ECom.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECom.Infrastructure12.Persistance
+namespace ECom.Application.Persistance
 {
     public class InMemoryDbContext : DbContext
     {

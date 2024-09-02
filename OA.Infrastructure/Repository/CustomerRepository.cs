@@ -1,7 +1,7 @@
-﻿using ECom.Domain.Contract;
+﻿using ECom.Application.Persistance;
+using ECom.Application.Persistance.Seeds;
+using ECom.Domain.Contract;
 using ECom.Domain.Entities;
-using ECom.Infrastructure.Persistance;
-using ECom.Infrastructure.Persistance.Seeds;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;

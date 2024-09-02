@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ECom.Domain.Entities;
-using ECom.Persistence;
+using ECom.Application.Persistance;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

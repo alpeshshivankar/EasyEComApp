@@ -1,6 +1,6 @@
-﻿using MediatR;
+﻿using ECom.Application.Persistance;
 using ECom.Domain.Entities;
-using ECom.Persistence;
+using MediatR;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;

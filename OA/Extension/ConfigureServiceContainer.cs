@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ECom.Application.Mapping;
+using ECom.Application.Persistance;
 using ECom.Domain.Contract;
 using ECom.Infrastructure.Persistance;
 using ECom.Infrastructure.Persistance.OrderRepository;

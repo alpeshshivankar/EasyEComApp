@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using ECom.Service.Exceptions;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using ECom.Application.Exceptions;
 
-namespace ECom.Service.Middleware
+namespace ECom.Application.Middleware
 {
     public class CustomExceptionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<CustomExceptionMiddleware> _logger;
+
         public CustomExceptionMiddleware(RequestDelegate next, ILogger<CustomExceptionMiddleware> logger)
         {
             _next = next;
@@ -41,17 +42,21 @@ namespace ECom.Service.Middleware
                     code = (int)HttpStatusCode.BadRequest;
                     result = JsonConvert.SerializeObject(validationException.Failures);
                     break;
+
                 case BadRequestException badRequestException:
                     code = (int)HttpStatusCode.BadRequest;
                     result = badRequestException.Message;
                     break;
+
                 case DeleteFailureException deleteFailureException:
                     code = (int)HttpStatusCode.BadRequest;
                     result = deleteFailureException.Message;
                     break;
+
                 case NotFoundException _:
                     code = (int)HttpStatusCode.NotFound;
                     break;
+
                 default:
                     code = (int)HttpStatusCode.InternalServerError;
                     break;
@@ -64,5 +69,4 @@ namespace ECom.Service.Middleware
             return context.Response.WriteAsync(JsonConvert.SerializeObject(new { StatusCode = code, ErrorMessage = exception.Message }));
         }
     }
-
 }

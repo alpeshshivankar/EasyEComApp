@@ -1,11 +1,9 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
+﻿using ECom.Application.Features.CustomerFeatures.Queries;
+using ECom.Service.Features.CustomerFeatures.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using ECom.Service.Features.CustomerFeatures.Commands;
-using ECom.Service.Features.CustomerFeatures.Queries;
 using System.Threading.Tasks;
-using ECom.Service.Features.ProductFeatures.Queries;
 
 namespace ECom.Controllers
 {
@@ -16,42 +14,45 @@ namespace ECom.Controllers
     public class CustomerController : ControllerBase
     {
         private IMediator _mediator;
-        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+
+        public CustomerController(IMediator mediator)
+        {
+            _mediator = mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateCustomerCommand command)
         {
-            return Ok(await Mediator.Send(command));
+            return Ok(await _mediator.Send(command));
         }
 
         [HttpGet]
         [Route("")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await Mediator.Send(new GetAllCustomerQuery()));
+            return Ok(await _mediator.Send(new GetAllCustomerQuery()));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok(await Mediator.Send(new GetCustomerByIdQuery { Id = id }));
+            return Ok(await _mediator.Send(new GetCustomerByIdQuery { Id = id }));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            return Ok(await Mediator.Send(new DeleteProductCommand { Id = id }));
+            return Ok(await _mediator.Send(new DeleteCustomerCommand { Id = id }));
         }
 
-
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UpdateProductCommand command)
+        public async Task<IActionResult> Update(int id, UpdateCustomerCommand command)
         {
             if (id != command.Id)
             {
                 return BadRequest();
             }
-            return Ok(await Mediator.Send(command));
+            return Ok(await _mediator.Send(command));
         }
     }
 }

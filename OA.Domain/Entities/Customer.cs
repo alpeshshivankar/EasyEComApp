@@ -1,13 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ECom.Domain.Entities
 {
-    public class Customer : BaseEntity
+    public class Customer:BaseEntity
     {
         public Customer()
         {
             Orders = new List<Order>();
         }
+
         public string CustomerName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
@@ -18,6 +23,8 @@ namespace ECom.Domain.Entities
         public string Country { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public List<Order> Orders { get; set; }
     }

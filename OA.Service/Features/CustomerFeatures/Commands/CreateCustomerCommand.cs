@@ -1,8 +1,4 @@
 ﻿using MediatR;
-using ECom.Domain.Entities;
-using ECom.Persistence;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ECom.Service.Features.CustomerFeatures.Commands
 {
@@ -18,31 +14,6 @@ namespace ECom.Service.Features.CustomerFeatures.Commands
         public string Country { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
-        public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, int>
-        {
-            private readonly IApplicationDbContext _context;
-            public CreateCustomerCommandHandler(IApplicationDbContext context)
-            {
-                _context = context;
-            }
-            public async Task<int> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
-            {
-                var customer = new Customer();
-                customer.CustomerName = request.CustomerName;
-                customer.ContactName = request.ContactName;
-                customer.ContactTitle = request.ContactTitle;
-                customer.Address = request.Address;
-                customer.City = request.City;
-                customer.Region = request.Region;
-                customer.PostalCode = request.PostalCode;
-                customer.Country = request.Country;
-                customer.Phone = request.Phone;
-                customer.Fax = request.Fax;
-
-                _context.Customers.Add(customer);
-                await _context.SaveChangesAsync();
-                return customer.Id;
-            }
-        }
+       
     }
 }

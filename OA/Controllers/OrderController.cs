@@ -1,5 +1,5 @@
-﻿using ECom.Service.Features.OrderFeatures.Commands;
-using ECom.Service.Features.OrderFeatures.Queries;
+﻿using ECom.Application.Features.OrderFeatures.Commands;
+using ECom.Application.Features.OrderFeatures.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,46 +8,47 @@ using System.Threading.Tasks;
 
 namespace ECom.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/v{version:apiVersion}/Order")]
+    [ApiVersion("1.0")]
     public class OrderController : ControllerBase
     {
         private IMediator _mediator;
-        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-
+        public OrderController(IMediator mediator)
+        {
+            _mediator = mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+        }
 
         [HttpGet]
         [Route("")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await Mediator.Send(new GetAllOrderQuery()));
+            return Ok(await _mediator.Send(new GetAllOrderQuery()));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            return Ok(await Mediator.Send(new GetOrderByIdQuery { Id = id }));
+            return Ok(await _mediator.Send(new GetOrderByIdQuery { Id = id }));
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateOrderCommand command)
         {
-            return Ok(await Mediator.Send(command));
+            return Ok(await _mediator.Send(command));
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, UpdateOrderCommand command)
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateOrderCommand command)
         {
-            if (id != command.Id)
-            {
-                return BadRequest();
-            }
-            return Ok(await Mediator.Send(command));
+            return Ok(await _mediator.Send(command));
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(DeleteOrderCommand command)
         {
-            return Ok(await Mediator.Send(new DeleteOrderCommand { Id = id }));
+            return Ok(await _mediator.Send(command));
         }
     }
 }

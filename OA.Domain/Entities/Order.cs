@@ -5,12 +5,12 @@ namespace ECom.Domain.Entities
 {
     public class Order : BaseEntity
     {
-        public Customer Customers { get; set; }
         public int CustomerId { get; set; }
-        public int EmployeeId { get; set; }
         public DateTime OrderDate { get; set; }
-        public DateTime RequiredDate { get; set; }
-        public List<OrderDetail> OrderDetails { get; set; }
+        public DateTime? OrderFulfillmentDate { get; set; }
+        public List<Product> ProductDetails { get; set; }
+        public string OrderStatus { get; set; }
+        public DateTime CreatedDate { get; set; }
 
     }
 }

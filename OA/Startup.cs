@@ -1,28 +1,22 @@
-using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.FeatureManagement;
-using ECom.Domain.Settings;
-using ECom.Infrastructure.Extension;
-using ECom.Persistence;
-using ECom.Service;
 using Serilog;
-using System;
 using System.IO;
+using System.Reflection;
+using ECom.Persistence;
+using Microsoft.EntityFrameworkCore;
+using FluentValidation.AspNetCore;
+using ECom.Extension;
 
 namespace ECom
 {
     public class Startup
     {
         private readonly IConfigurationRoot configRoot;
-        private AppSettings AppSettings { get; set; }
 
         public Startup(IConfiguration configuration)
         {
@@ -31,9 +25,6 @@ namespace ECom
 
             IConfigurationBuilder builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
             configRoot = builder.Build();
-
-            AppSettings = new AppSettings();
-            Configuration.Bind(AppSettings);
         }
 
         public IConfiguration Configuration { get; }
@@ -41,31 +32,15 @@ namespace ECom
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddController();
-
-            services.AddDbContext(Configuration, configRoot);
-
-            services.AddIdentityService(Configuration);
-
+            services.AddDbContext();
+            services.AddFluentValidationAutoValidation();
+            services.AddFluentValidationClientsideAdapters();
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Load("Ecom.Application")));
             services.AddAutoMapper();
-
             services.AddScopedServices();
-
-            services.AddTransientServices();
-
             services.AddSwaggerOpenAPI();
-
-            services.AddMailSetting(Configuration);
-
-            services.AddServiceLayer();
-
             services.AddVersion();
-
-            //services.AddHealthCheck(AppSettings, Configuration);
-
-            services.AddFeatureManagement();
         }
-
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory log)
         {
@@ -80,36 +55,9 @@ namespace ECom
                  .AllowAnyMethod());
 
             app.ConfigureCustomExceptionMiddleware();
-
             log.AddSerilog();
-
-            //app.ConfigureHealthCheck();
-
-
             app.UseRouting();
-
-            app.UseAuthentication();
-
-            app.UseAuthorization();
             app.ConfigureSwagger();
-            //app.UseHealthChecks("/healthz", new HealthCheckOptions
-            //{
-            //    Predicate = _ => true,
-            //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse,
-            //    ResultStatusCodes =
-            //    {
-            //        [HealthStatus.Healthy] = StatusCodes.Status200OK,
-            //        [HealthStatus.Degraded] = StatusCodes.Status500InternalServerError,
-            //        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable,
-            //    },
-            //}).UseHealthChecksUI(setup =>
-            //  {
-            //      setup.ApiPath = "/healthcheck";
-            //      setup.UIPath = "/healthcheck-ui";
-            //      setup.AddCustomStylesheet("Customization/custom.css");
-            //  });
-
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

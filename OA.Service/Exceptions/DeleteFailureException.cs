@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ECom.Service.Exceptions
+namespace ECom.Application.Exceptions
 {
     public class DeleteFailureException : Exception
     {

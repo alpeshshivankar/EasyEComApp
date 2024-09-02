@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace ECom.Service.Exceptions
+namespace ECom.Application.Exceptions
 {
     public class ApiException : Exception
     {
@@ -10,7 +10,7 @@ namespace ECom.Service.Exceptions
         public ApiException(string message) : base(message) { }
 
         public ApiException(string message, params object[] args)
-            : base(String.Format(CultureInfo.CurrentCulture, message, args))
+            : base(string.Format(CultureInfo.CurrentCulture, message, args))
         {
         }
     }

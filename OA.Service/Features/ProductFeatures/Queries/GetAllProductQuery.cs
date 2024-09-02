@@ -1,6 +1,5 @@
-﻿using ECom.Domain.Contract;
+﻿using ECom.Application.Persistance;
 using ECom.Domain.Entities;
-using ECom.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using ECom.Application.Persistance;
 using ECom.Domain.Entities;
-using ECom.Persistence;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,11 +11,13 @@ namespace ECom.Application.Features.CategoryFeatures.Commands
     {
         private readonly InMemoryDbContext _context;
         private readonly IMapper _mapper;
+
         public CreateCategoryCommandHandler(InMemoryDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
+
         public async Task<int> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var category = _mapper.Map<Category>(request);

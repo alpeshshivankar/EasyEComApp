@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ECom.Persistence;
+using ECom.Application.Persistance;
 using MediatR;
 using System.Linq;
 using System.Threading;

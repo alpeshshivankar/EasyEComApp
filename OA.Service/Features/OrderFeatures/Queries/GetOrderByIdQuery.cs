@@ -1,5 +1,5 @@
 ﻿using ECom.Domain.Entities;
-using ECom.Persistence;
+using ECom.Application.Persistance;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

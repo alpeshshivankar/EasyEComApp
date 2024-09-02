@@ -1,3 +1,5 @@
+using ECom.Extension;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,10 +9,6 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using System.IO;
 using System.Reflection;
-using ECom.Persistence;
-using Microsoft.EntityFrameworkCore;
-using FluentValidation.AspNetCore;
-using ECom.Extension;
 
 namespace ECom
 {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECom.Infrastructure12.Persistance.Seeds
+namespace ECom.Application.Persistance.Seeds
 {
     public class SeedData
     {
@@ -44,7 +44,7 @@ namespace ECom.Infrastructure12.Persistance.Seeds
 
             var customers = new List<Customer>
             {
-                
+
                 new()
                 {
                     CustomerName ="Pattrick",
@@ -134,13 +134,13 @@ namespace ECom.Infrastructure12.Persistance.Seeds
 
             if (context.Categories.Any())
             {
-                return; 
+                return;
             }
             context.Categories.AddRange(categories);
             context.Products.AddRange(products);
             context.Customers.AddRange(customers);
             context.Orders.AddRange(orders);
- 
+
             await context.SaveChangesAsync();
         }
     }
